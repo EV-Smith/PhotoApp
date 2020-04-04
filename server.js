@@ -22,7 +22,7 @@ mongoose.connect(dbConnectionString)
   .then(() => console.log('MongoDB Connected!'))
   .catch(err => console.log(err));
 
-//Passport initialization
+// Passport initialization
 expressApp.use(passport.initialize());
 require('./config/passport')(passport);
 
