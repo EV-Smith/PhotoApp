@@ -6,9 +6,9 @@ const ProfileModel = require('../../models/Profile');
 const UserModel = require('../../models/User');
 const validateProfileInput = require('../../validation/profile');
 
-//@route POST api/profile
-//@desc Update user profile
-//@access Private
+// @route   POST api/profile
+// @desc    Update user profile
+// @access  Private
 router.post(
     '/',
     passport.authenticate('jwt', {session: false}),
@@ -19,7 +19,7 @@ router.post(
           return res.status(400).json(errors);
         }
 
-        //Get fields
+        // Get fields
         const profileFields = {};
         const userFields = {};
 
@@ -40,16 +40,16 @@ router.post(
         ). then(profile => {
             res.json(profile);
 
-            //Update users model also if name/username/email is updated here      
+            // Update users model also if name/username/email is updated here      
             UserModel.findByIdAndUpdate(
                 req.user.id, 
                 {$set: userFields}
-                //Another way to write above 
-                // {$set: {
+                // Another way to write above 
+                //   {$set: {
                 //     fullName:  req.body.name,
                 //     userName: req.body.userName,
                 //     email: req.body.email
-                // }}
+                //   }}
                 ).then()
                 .catch(err => console.log(err))
                 }
