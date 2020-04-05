@@ -6,20 +6,29 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  name: {
+  userName: {
     type: String
   },
   avatar: {
     type: String
   },
-  photo: {
+  postPhoto: {
     type: String,
     required: true
   },
-  caption: {
+  postCaption: {
     type: String,
+    required: true
   },
   likes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+      }
+    }
+  ],
+  dislikes: [
     {
       user: {
         type: Schema.Types.ObjectId,
@@ -33,7 +42,7 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
       },
-      text: {
+      commentText: {
         type: String,
         required: true
       },
@@ -43,13 +52,13 @@ const PostSchema = new Schema({
       avatar: {
         type: String
       },
-      date: {
+      commentDate: {
         type: Date,
         default: Date.now
       }
     }
   ],
-  date: {
+  postDate: {
     type: Date,
     default: Date.now
   }
