@@ -40,7 +40,7 @@ router.post('/register', (req,res) =>{
                 fullName: req.body.fullName,
                 userName: req.body.userName,              
                 password: req.body.password,
-                avatar: req.body.avatar  
+                avatar: avatar
              });
 
              //Encrypt pasword
